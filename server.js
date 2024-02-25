@@ -49,6 +49,11 @@ mongoose.connect(CONNECTION_STRING, {
   .catch((error) => console.error('Błąd podczas łączenia z bazą danych:', error));
 
 // Endpoint do pobierania zadań
+app.get("/", (req, res) => {
+  res.send("Serwer działa")
+});
+
+// Endpoint do pobierania zadań
 app.get("/tasks", (req, res) => {
   Task.find() // Znajduje wszystkie zadania w bazie danych
     .then(user => {
