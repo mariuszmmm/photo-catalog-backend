@@ -18,7 +18,7 @@ app.use(express.json()); // Obsługuje dane wejściowe w formacie JSON
 app.use(express.static("public")); // Obsługuje statyczne pliki z katalogu "public"
 
 // Definicja portu i danych do połączenia z bazą danych
-const port = 5000;
+const PORT = process.env.PORT;
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const DATABASENAME = "tasksdb";
 const COLLECTIONNAME = "tasks";
@@ -142,4 +142,4 @@ app.put('/tasks/:id/removeImage', (req, res) => {
 });
 
 // Uruchomienie serwera na określonym porcie
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
