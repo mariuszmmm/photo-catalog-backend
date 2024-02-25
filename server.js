@@ -12,6 +12,26 @@ const fs = require('fs'); // Moduł File System (fs) pozwala na interakcję z sy
 // Inicjalizacja aplikacji Express
 const app = express();
 
+
+
+const fs = require('fs');
+const path = require('path');
+
+// Ścieżka do głównego katalogu
+const mainDirectory = path.join(__dirname, 'public/Images');
+
+// Sprawdzenie, czy katalog istnieje, a jeśli nie, to stworzenie go
+if (!fs.existsSync(mainDirectory)) {
+  fs.mkdirSync(mainDirectory, { recursive: true });
+  console.log('Katalog został stworzony.');
+} else {
+  console.log('Katalog już istnieje.');
+}
+
+
+
+
+
 // Dodanie middleware do aplikacji
 app.use(cors()); // Pozwala na obsługę CORS
 app.use(express.json()); // Obsługuje dane wejściowe w formacie JSON
