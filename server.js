@@ -14,8 +14,6 @@ const app = express();
 
 
 
-const fs = require('fs');
-const path = require('path');
 
 // Ścieżka do głównego katalogu
 const mainDirectory = path.join(__dirname, 'public/Images');
