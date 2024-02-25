@@ -12,9 +12,6 @@ const fs = require('fs'); // Moduł File System (fs) pozwala na interakcję z sy
 // Inicjalizacja aplikacji Express
 const app = express();
 
-
-
-
 // Ścieżka do głównego katalogu
 const mainDirectory = path.join(__dirname, 'public/Images');
 
@@ -26,10 +23,6 @@ if (!fs.existsSync(mainDirectory)) {
   console.log('Katalog już istnieje.');
 }
 
-
-
-
-
 // Dodanie middleware do aplikacji
 app.use(cors()); // Pozwala na obsługę CORS
 app.use(express.json()); // Obsługuje dane wejściowe w formacie JSON
@@ -39,7 +32,6 @@ app.use(express.static("public")); // Obsługuje statyczne pliki z katalogu "pub
 const port = process.env.PORT || 5000;
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const DATABASENAME = "tasksdb";
-const COLLECTIONNAME = "tasks";
 
 // Definicja schematu i modelu Mongoose
 const taskSchema = new mongoose.Schema({
@@ -77,7 +69,7 @@ app.get("/tasks", (req, res) => {
     .then(user => {
       setTimeout(function () {
         res.json(user) // Wysyła odpowiedź z danymi użytkownika
-      }, 500);
+      }, 0);
     })
     .catch(err => console.error("błąd w pobieraniu zadań: ", err))
 });
