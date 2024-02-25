@@ -142,4 +142,4 @@ app.put('/tasks/:id/removeImage', (req, res) => {
 });
 
 // Uruchomienie serwera na określonym porcie
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+app.listen(PORT || 5000, () => console.log(`Server is running on port ${PORT || 5000}`));
