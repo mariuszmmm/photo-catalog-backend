@@ -69,7 +69,7 @@ app.get("/tasks", (req, res) => {
     .then(user => {
       setTimeout(function () {
         res.json(user) // Wysyła odpowiedź z danymi użytkownika
-      }, 0);
+      }, 500);
     })
     .catch(err => console.error("błąd w pobieraniu zadań: ", err))
 });
