@@ -77,34 +77,28 @@ User.findOne({ isAdmin: true }).then(admin => {
     const adminUsername = process.env.ADMIN_USERNAME;
     const adminPassword = process.env.ADMIN_PASSWORD;
 
-    bcrypt.genSalt(10, (err, salt) => {
+
+
+    bcrypt.hash(adminPassword, 10, (err, hashedPassword) => {
       if (err) {
-        console.error('Błąd generowania soli:', err);
+        console.error('Błąd hashowania hasła:', err);
         return;
       }
 
-      bcrypt.hash(adminPassword, salt, (err, hashedPassword) => {
-        if (err) {
-          console.error('Błąd hashowania hasła:', err);
-          return;
-        }
+      const newAdmin = new User({
+        username: adminUsername,
+        password: hashedPassword,
+        isAdmin: true
+      });
 
-        const newAdmin = new User({
-          username: adminUsername,
-          password: hashedPassword,
-          isAdmin: true
-        });
-
-        newAdmin.save().then(() => {
-          console.log('Tworzenie konta administratora');
-        }).catch(err => {
-          console.error('Błąd podczas tworzenia konta administratora:', err);
-        });
+      newAdmin.save().then(() => {
+        console.log('Tworzenie konta administratora');
+      }).catch(err => {
+        console.error('Błąd podczas tworzenia konta administratora:', err);
       });
     });
   }
 });
-
 
 // Logowanie
 app.post('/login', async (req, res) => {
