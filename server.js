@@ -77,11 +77,7 @@ User.findOne({ isAdmin: true }).then(admin => {
     const adminUsername = process.env.ADMIN_USERNAME;
     const adminPassword = process.env.ADMIN_PASSWORD;
 
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    
-
-    bcrypt.hash(adminPassword, bcrypt.genSalt(10), (err, hashedPassword) => {
+    bcrypt.hash(adminPassword, 10, (err, hashedPassword) => {
       if (err) {
         console.error('Błąd hashowania hasła:', err);
         return;
