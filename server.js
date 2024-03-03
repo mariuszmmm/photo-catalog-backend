@@ -1,4 +1,4 @@
-require('dotenv').config(); // Wczytanie zmiennych środowiskowych
+// require('dotenv').config(); // Wczytanie zmiennych środowiskowych
 const express = require("express"); // Express to framework do tworzenia aplikacji webowych na platformie Node.js
 const cors = require("cors"); // CORS (Cross-Origin Resource Sharing) to mechanizm umożliwiający wielu zasobom (np. czcionki, JavaScript, itp.) udostępnianie zasobów pochodzących z innego źródła niż bieżące
 const mongoose = require('mongoose'); // Mongoose to biblioteka Node.js, która ułatwia pracę z MongoDB
