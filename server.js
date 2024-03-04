@@ -19,7 +19,40 @@ app.use('/', itemRoutes);
 adminCheck();
 imageDirCheck();
 
-// Info Serwer działa
+
+const fs = require('fs');
+
+// Ścieżka do folderu, w którym przechowywane są pliki
+const folderPath = 'public/Images';
+
+// Wyświetlanie listy plików w konsoli
+fs.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.error('Błąd podczas odczytywania listy plików:', err);
+    return;
+  }
+  console.log('Lista plików:');
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
+
+// Udostępnianie folderu, w którym przechowywane są pliki
+app.use('/files', express.static('public/Images'));
+
+// Endpoint do pobierania pliku
+app.get('/download/:nazwaPliku', (req, res) => {
+  const { nazwaPliku } = req.params;
+  const sciezkaDoPliku = `public/Images/${nazwaPliku}`;
+  res.download(sciezkaDoPliku);
+});
+
+
+
+
+
+
 app.get("/", (req, res) => {
   res.send("Serwer działa")
 });

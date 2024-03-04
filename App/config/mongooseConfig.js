@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
-const DATABASENAME = "PhotoCatalog";
+const DATABASENAME = "PhotoCatalog-dev";
 
 mongoose.connect(CONNECTION_STRING, {
   dbName: DATABASENAME
