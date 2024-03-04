@@ -23,7 +23,7 @@ imageDirCheck();
 const fs = require('fs');
 
 // Ścieżka do folderu, w którym przechowywane są pliki
-const folderPath = 'public';
+const folderPath = 'public/Images';
 
 // Wyświetlanie listy plików w konsoli
 fs.readdir(folderPath, (err, files) => {
