@@ -32,6 +32,7 @@ if (!fs.existsSync(imagesDirectory)) {
   console.log('Katalog "Images" już istnieje.');
 }
 
+//hgfh
 
 
 // Ścieżka do folderu, w którym przechowywane są pliki
