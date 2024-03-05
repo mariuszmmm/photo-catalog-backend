@@ -23,7 +23,7 @@ const path = require("path");
 adminCheck();
 // imageDirCheck();
 
-// hgfggh
+// hgfgghgcf
 const imagesDirectory = path.join(__dirname, 'public/Images');
 if (!fs.existsSync(imagesDirectory)) {
   fs.mkdirSync(imagesDirectory, { recursive: true });
