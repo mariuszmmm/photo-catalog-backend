@@ -1,4 +1,4 @@
-const express = require("express");
+⁷const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require('body-parser');
@@ -32,7 +32,7 @@ if (!fs.existsSync(imagesDirectory)) {
   console.log('Katalog "Images" już istnieje.');
 }
 
-//hgfh
+//hgfhhgg
 
 
 // Ścieżka do folderu, w którym przechowywane są pliki
