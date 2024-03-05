@@ -32,9 +32,6 @@ if (!fs.existsSync(imagesDirectory)) {
   console.log('Katalog "Images" już istnieje.');
 }
 
-//hgfhhgg
-
-
 // Ścieżka do folderu, w którym przechowywane są pliki
 const folderPath = 'public/Images';
 
