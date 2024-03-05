@@ -11,16 +11,28 @@ require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public/Images"));
+app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use('/', userRoutes);
 app.use('/', itemRoutes);
 
-adminCheck();
-imageDirCheck();
-
-
 const fs = require('fs');
+
+const path = require("path");
+
+adminCheck();
+// imageDirCheck();
+
+
+const imagesDirectory = path.join(__dirname, 'public/Images');
+if (!fs.existsSync(imagesDirectory)) {
+  fs.mkdirSync(imagesDirectory, { recursive: true });
+  console.log('Katalog "Images" został stworzony.');
+} else {
+  console.log('Katalog "Images" już istnieje.');
+}
+
+
 
 // Ścieżka do folderu, w którym przechowywane są pliki
 const folderPath = 'public/Images';
