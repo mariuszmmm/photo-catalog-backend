@@ -11,7 +11,7 @@ require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("public/Images"));
 app.use(bodyParser.json());
 app.use('/', userRoutes);
 app.use('/', itemRoutes);
@@ -23,7 +23,7 @@ imageDirCheck();
 const fs = require('fs');
 
 // Ścieżka do folderu, w którym przechowywane są pliki
-const folderPath = './public/Images';
+const folderPath = 'public/Images';
 
 // Wyświetlanie listy plików w konsoli
 fs.readdir(folderPath, (err, files) => {
