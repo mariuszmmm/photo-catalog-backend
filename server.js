@@ -25,9 +25,6 @@ const fs = require('fs');
 
 const path = require("path");
 
-adminCheck();
-imageDirCheck();
-
 // hgfgghgcf
 // const imagesDirectory = path.join(__dirname, 'public/Images');
 // if (!fs.existsSync(imagesDirectory)) {
