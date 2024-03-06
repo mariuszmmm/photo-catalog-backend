@@ -5,7 +5,9 @@ const path = require("path");
 
 
 router.get('/files', (req, res) => {
-  const directoryPath = path.join(__dirname, 'public', 'Images');
+  // const directoryPath = path.join(__dirname, 'public', 'Images');
+  const directoryPath = path.join(__dirname, '../public/Images');
+
   console.log('Ścieżka do katalogu:', directoryPath);
   // Odczytaj zawartość folderu
   fs.readdir(directoryPath, (err, files) => {
