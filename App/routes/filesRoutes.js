@@ -3,12 +3,10 @@ const router = express.Router();
 const fs = require('fs');
 
 router.get('/files', (req, res) => {
-  // const directoryPath = path.join(__dirname, 'public', 'Images');
-  const directoryPath = path.join(__dirname, './public/Images');
-
-
+  const directoryPath = path.join(__dirname, 'public', 'Images');
+  console.log('Ścieżka do katalogu:', directoryPath);
   // Odczytaj zawartość folderu
-  fs.readdir('public/Images', (err, files) => {
+  fs.readdir(directoryPath, (err, files) => {
     if (err) {
       return res.status(500).send('Wystąpił błąd podczas odczytu folderu.');
     }
