@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require('fs');
 
-function imageDirCheck() {
+function imagesDirCheck() {
   const imagesDirectory = path.join(__dirname, '../public/Images');
   if (!fs.existsSync(imagesDirectory)) {
     fs.mkdirSync(imagesDirectory, { recursive: true });
@@ -11,4 +11,4 @@ function imageDirCheck() {
   }
 }
 
-module.exports = imageDirCheck;
+module.exports = imagesDirCheck;
