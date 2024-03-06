@@ -6,6 +6,7 @@ const userRoutes = require('./App/routes/userRoutes');
 const itemRoutes = require('./App/routes/itemRoutes');
 const adminCheck = require('./App/adminCheck');
 const imageDirCheck = require('./App/imageDirCheck');
+const showFilesList = require('./App/showFilesList');
 
 require('dotenv').config();
 
@@ -19,35 +20,17 @@ app.use('/', itemRoutes);
 adminCheck();
 imageDirCheck();
 
+showFilesList();
+
 const fs = require('fs');
 //gggh
 
 
 const path = require("path");
 
-// hgfgghgcf
-// const imagesDirectory = path.join(__dirname, 'public/Images');
-// if (!fs.existsSync(imagesDirectory)) {
-//   fs.mkdirSync(imagesDirectory, { recursive: true });
-//   console.log('Katalog "Images" został stworzony.');
-// } else {
-//   console.log('Katalog "Images" już istnieje.');
-// }
 
-// Ścieżka do folderu, w którym przechowywane są pliki
-const folderPath = 'public/Images';
 
-// Wyświetlanie listy plików w konsoli
-fs.readdir(folderPath, (err, files) => {
-  if (err) {
-    console.error('Błąd podczas odczytywania listy plików:', err);
-    return;
-  }
-  console.log('Lista plików:');
-  files.forEach(file => {
-    console.log(file);
-  });
-});
+
 
 
 // Udostępnianie folderu, w którym przechowywane są pliki
