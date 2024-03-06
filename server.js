@@ -23,14 +23,27 @@ app.use('/files', express.static('public/Images'));
 
 adminCheck();
 imageDirCheck();
-
 showFilesList();
 
+// const path = require("path");
 // const fs = require('fs');
-//gggh
+
+// router.get('/files', (req, res) => {
+//   const directoryPath = path.join(__dirname, 'public', 'Images');
+//   console.log('Ścieżka do katalogu:', directoryPath);
+//   // Odczytaj zawartość folderu
+//   fs.readdir(directoryPath, (err, files) => {
+//     if (err) {
+//       return res.status(500).send('Wystąpił błąd podczas odczytu folderu.');
+//     }
+
+//     // Zwróć listę plików
+//     res.json(files);
+//   });
+// });
 
 
-const path = require("path");
+
 
 // Udostępnianie folderu, w którym przechowywane są pliki
 
