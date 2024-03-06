@@ -21,7 +21,7 @@ router.post('/login', async (req, res) => {
   if (!isPasswordCorrect) {
     return res.status(401).json({ message: 'Nieautoryzowany użytkownik' });
   }
-  const token = jwt.sign({ username, isAdmin: user.isAdmin }, jwtSecret, { expiresIn: '5m' });
+  const token = jwt.sign({ username, isAdmin: user.isAdmin }, jwtSecret, { expiresIn: '30m' });
   res.status(200).json({ token });
 });
 
