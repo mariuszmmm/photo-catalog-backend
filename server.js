@@ -20,6 +20,22 @@ adminCheck();
 imageDirCheck();
 
 const fs = require('fs');
+//gggh
+
+
+const path = require("path");
+
+adminCheck();
+// imageDirCheck();
+
+// hgfgghgcf
+const imagesDirectory = path.join(__dirname, 'public/Images');
+if (!fs.existsSync(imagesDirectory)) {
+  fs.mkdirSync(imagesDirectory, { recursive: true });
+  console.log('Katalog "Images" został stworzony.');
+} else {
+  console.log('Katalog "Images" już istnieje.');
+}
 
 // Ścieżka do folderu, w którym przechowywane są pliki
 const folderPath = 'public/Images';
