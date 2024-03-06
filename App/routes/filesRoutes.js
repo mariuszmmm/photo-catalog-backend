@@ -3,7 +3,9 @@ const router = express.Router();
 const fs = require('fs');
 
 router.get('/files', (req, res) => {
-  const directoryPath = path.join(__dirname, 'public', 'Images');
+  // const directoryPath = path.join(__dirname, 'public', 'Images');
+  const directoryPath = path.join(__dirname, '../public/Images');
+
 
   // Odczytaj zawartość folderu
   fs.readdir(directoryPath, (err, files) => {
