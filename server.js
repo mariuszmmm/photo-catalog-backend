@@ -63,6 +63,20 @@ app.get('/download/:nazwaPliku', (req, res) => {
   res.download(sciezkaDoPliku);
 });
 
+app.get('/files', (req, res) => {
+  const directoryPath = path.join(__dirname, 'public', 'Images');
+
+  // Odczytaj zawartość folderu
+  fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+      return res.status(500).send('Wystąpił błąd podczas odczytu folderu.');
+    }
+
+    // Zwróć listę plików
+    res.json(files);
+  });
+});
+
 
 
 app.get("/", (req, res) => {
