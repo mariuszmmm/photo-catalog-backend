@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./App/routes/userRoutes');
 const itemRoutes = require('./App/routes/itemRoutes');
 const filesRoutes = require('./App/routes/filesRoutes');
+const downloadRoutes = require('./App/routes/downloadRoutes');
 const adminCheck = require('./App/adminCheck');
 const imageDirCheck = require('./App/imageDirCheck');
-const showFilesList = require('./App/showFilesList');
 
 require('dotenv').config();
 
@@ -18,41 +18,17 @@ app.use(bodyParser.json());
 app.use('/', userRoutes);
 app.use('/', itemRoutes);
 app.use('/', filesRoutes);
+app.use('/', downloadRoutes);
+
+
 
 app.use('/files', express.static('public/Images'));
 
 adminCheck();
 imageDirCheck();
-showFilesList();
-
-// const path = require("path");
-// const fs = require('fs');
-
-// router.get('/files', (req, res) => {
-//   const directoryPath = path.join(__dirname, 'public', 'Images');
-//   console.log('Ścieżka do katalogu:', directoryPath);
-//   // Odczytaj zawartość folderu
-//   fs.readdir(directoryPath, (err, files) => {
-//     if (err) {
-//       return res.status(500).send('Wystąpił błąd podczas odczytu folderu.');
-//     }
-
-//     // Zwróć listę plików
-//     res.json(files);
-//   });
-// });
 
 
 
-
-// Udostępnianie folderu, w którym przechowywane są pliki
-
-// Endpoint do pobierania pliku
-app.get('/download/:nazwaPliku', (req, res) => {
-  const { nazwaPliku } = req.params;
-  const sciezkaDoPliku = `public/Images/${nazwaPliku}`;
-  res.download(sciezkaDoPliku);
-});
 
 
 
