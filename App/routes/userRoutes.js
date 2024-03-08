@@ -9,17 +9,17 @@ const jwtSecret = process.env.JWT_SECRET;
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   if (!(username && password)) {
-    return res.status(400).json({ message: 'Wymagany login i hasło' });
+    return res.status(400).json({ message: "WPROWADŹ LOGIN I HASŁO" });
   }
 
   const user = await User.findOne({ username });
   if (!user) {
-    return res.status(404).json({ message: 'Brak w bazie takiego użytkownika' });
+    return res.status(404).json({ message: "UŻYTKOWNIK NIE ZOSTAŁ ZNALEZIONY" });
   }
 
   const isPasswordCorrect = await bcrypt.compare(password, user.password);
   if (!isPasswordCorrect) {
-    return res.status(401).json({ message: 'Nieautoryzowany użytkownik' });
+    return res.status(401).json({ message: "LOGIN LUB HASŁO NIEPOPRAWNE" });
   }
   const token = jwt.sign({ username, isAdmin: user.isAdmin }, jwtSecret, { expiresIn: '30m' });
   res.status(200).json({ token });
@@ -66,6 +66,11 @@ router.post('/user/password', async (req, res) => {
 // Dodawanie nowego użytkownika
 router.post('/user/add', async (req, res) => {
   const { username, password } = req.body;
+
+  if (!(username && password)) {
+    return res.status(400).json({ message: "WPROWADŹ LOGIN I HASŁO" });
+  }
+  
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ message: 'BRAK TOKENU' });
