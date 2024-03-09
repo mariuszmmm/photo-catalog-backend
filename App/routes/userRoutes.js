@@ -28,19 +28,20 @@ router.post('/login', async (req, res) => {
 // Zmiana hasła
 router.post('/user/password', async (req, res) => {
   const { username, password, newPassword } = req.body;
+
   if (!(password && newPassword)) {
-    return res.status(400).json({ message: 'Wprowadź hasła' });
+    return res.status(400).json({ message: "WPROWADŹ HASŁA" });
   } 
 
   const token = req.headers.authorization;
   if (!token) {
-    return res.status(401).json({ message: 'Nieautoryzowany użytkownik' });
+    return res.status(401).json({ message: "NIEAUTORYZOWANY UŻYTKOWNIK" });
   }
 
   try {
     const decoded = jwt.verify(token, jwtSecret);
     if (decoded.isAdmin) {
-      return res.status(403).json({ message: 'Zablokowana możliwość zmiany hasła administratora' });
+      return res.status(403).json({ message: "ZABRONIONA ZMIANA HASŁA ADMINISTORA" });
     }
   } catch (err) {
     console.error('Błąd weryfikacji tokena:', err);
@@ -49,18 +50,18 @@ router.post('/user/password', async (req, res) => {
 
   const user = await User.findOne({ username });
   if (!user) {
-    return res.status(401).json({ message: 'Brak w bazie takiego użytkownika' });
+    return res.status(401).json({ message: "BRAK UŻYTKOWNIKA" });
   }
 
-  const isPasswordCorrect = await bcrypt.compare(oldPassword, user.password);
+  const isPasswordCorrect = await bcrypt.compare(password, user.password);
   if (!isPasswordCorrect) {
-    return res.status(401).json({ message: 'Nieautoryzowany użytkownik' });
+    return res.status(401).json({ message: "HASŁO NIEPOPRAWNE" });
   }
 
   const hashedNewPassword = await bcrypt.hash(newPassword, 10);
   user.password = hashedNewPassword;
   await user.save();
-  res.status(200).json({ message: 'Hasło zostało zmienione' });
+  res.status(200).json({ message: "HASŁO ZMIENIONO POMYŚLNIE" });
 });
 
 // Dodawanie nowego użytkownika
