@@ -27,10 +27,10 @@ router.post('/login', async (req, res) => {
 
 // Zmiana hasła
 router.post('/user/password', async (req, res) => {
-  const { username, oldPassword, newPassword } = req.body;
-  if (!(oldPassword && newPassword)) {
+  const { username, password, newPassword } = req.body;
+  if (!(password && newPassword)) {
     return res.status(400).json({ message: 'Wprowadź hasła' });
-  }
+  } 
 
   const token = req.headers.authorization;
   if (!token) {
