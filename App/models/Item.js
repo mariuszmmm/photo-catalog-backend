@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 
 const itemSchema = new Schema({
-  content: { type: String, required: true },
+  header: { type: String, required: true },
+  content: { type: String, required: false },
   image: { type: String },
 });
 

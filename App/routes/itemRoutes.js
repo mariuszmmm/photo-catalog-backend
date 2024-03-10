@@ -13,7 +13,10 @@ router.get("/items", async (req, res) => {
 
 // Dodawanie nowego elementu
 router.post('/items', multer.single("file"), (req, res) => {
-  const itemData = { content: req.body.content };
+  const itemData = {
+    header: req.body.header,
+    content: req.body.content,
+  };
   if (req.file) {
     itemData.image = req.file.filename;
   }
@@ -24,7 +27,10 @@ router.post('/items', multer.single("file"), (req, res) => {
 
 // Edycja elementu
 router.put('/items/:id', multer.single("file"), (req, res) => {
-  const itemData = { content: req.body.content };
+  const itemData = {
+    header: req.body.header,
+    content: req.body.content,
+  };
   if (req.file) {
     itemData.image = req.file.filename;
   }
