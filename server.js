@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./App/routes/userRoutes');
 const itemRoutes = require('./App/routes/itemRoutes');
 const filesRoutes = require('./App/routes/filesRoutes');
-const downloadRoutes = require('./App/routes/downloadRoutes');
+const downloadFileRoutes = require('./App/routes/downloadFileRoutes');
+const downloadFilesRoutes = require('./App/routes/downloadFilesRoutes');
+
 const adminCheck = require('./App/adminCheck');
 const imagesDirCheck = require('./App/imagesDirCheck');
 
@@ -18,7 +20,8 @@ app.use(bodyParser.json());
 app.use('/', userRoutes);
 app.use('/', itemRoutes);
 app.use('/', filesRoutes);
-app.use('/', downloadRoutes);
+app.use('/', downloadFileRoutes);
+app.use('/', downloadFilesRoutes);
 app.use('/files', express.static('public/Images'));
 
 adminCheck();

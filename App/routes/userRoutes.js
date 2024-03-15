@@ -31,7 +31,7 @@ router.post('/user/password', async (req, res) => {
 
   if (!(password && newPassword)) {
     return res.status(400).json({ message: "WPROWADŹ HASŁA" });
-  } 
+  }
 
   const token = req.headers.authorization;
   if (!token) {
@@ -71,7 +71,7 @@ router.post('/user/add', async (req, res) => {
   if (!(username && password)) {
     return res.status(400).json({ message: "WPROWADŹ LOGIN I HASŁO" });
   }
-  
+
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ message: 'BRAK TOKENU' });
@@ -105,11 +105,7 @@ router.post('/user/add', async (req, res) => {
 // Pobieranie urzytkowników
 router.get("/users", (req, res) => {
   User.find()
-    .then(items => {
-      setTimeout(function () {
-        res.json(items)
-      }, 500);
-    })
+    .then(items => res.json(items))
     .catch(err => console.error("Błąd przy pobieraniu użytkowników: ", err))
 });
 

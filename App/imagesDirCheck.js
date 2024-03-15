@@ -9,6 +9,6 @@ function imagesDirCheck() {
   } else {
     console.log('Katalog "Images" już istnieje.');
   }
-}
+};
 
 module.exports = imagesDirCheck;
