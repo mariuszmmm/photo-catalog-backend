@@ -7,4 +7,4 @@ router.get('/files/download/:nazwaPliku', (req, res) => {
   res.download(directoryPath);
 });
 
-module.exports = router;
+module.exports = router;  
