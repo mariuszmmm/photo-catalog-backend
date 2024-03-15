@@ -22,7 +22,7 @@ app.use('/', itemRoutes);
 app.use('/', filesRoutes);
 app.use('/', downloadFileRoutes);
 app.use('/', downloadFilesRoutes);
-app.use('/files', express.static('public/Images'));
+app.use('/', express.static('public/Images'));
 
 adminCheck();
 imagesDirCheck();
