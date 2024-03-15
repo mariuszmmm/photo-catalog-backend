@@ -1,1 +1,1 @@
-﻿# photoCatalog-backend
+﻿# photo-catalog-backend
