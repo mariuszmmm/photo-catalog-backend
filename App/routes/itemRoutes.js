@@ -3,12 +3,30 @@ const router = express.Router();
 const Item = require('../models/Item');
 const multer = require('../config/multerConfig');
 const fs = require('fs');
+const loadExampleItems = require('../example/loadExampleItems');
+const copyExampleImages = require('../example/copyExampleImages')
 
 // Pobieranie elementów
 router.get("/items", async (req, res) => {
-  Item.find()
-    .then(items => res.json(items))
-    .catch(err => console.error("Błąd przy pobieraniu elementów: ", err))
+  setTimeout(() => {
+    Item.find()
+      .then(items => res.json(items))
+      .catch(err => console.error("Błąd przy pobieraniu elementów: ", err))
+  }, 1000)
+
+});
+
+// Załadowanie przykładowych elementów
+router.get("/example", async (req, res) => {
+  await copyExampleImages();
+  loadExampleItems()
+    .then(items => {
+      res.json(items);
+    })
+    .catch(err => {
+      console.error("Błąd przy pobieraniu elementów: ", err);
+      res.status(500).json({ error: "Wystąpił błąd podczas pobierania elementów" });
+    });
 });
 
 // Dodawanie nowego elementu

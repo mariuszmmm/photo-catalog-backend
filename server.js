@@ -7,7 +7,6 @@ const itemRoutes = require('./App/routes/itemRoutes');
 const filesRoutes = require('./App/routes/filesRoutes');
 const downloadFileRoutes = require('./App/routes/downloadFileRoutes');
 const downloadFilesRoutes = require('./App/routes/downloadFilesRoutes');
-
 const adminCheck = require('./App/adminCheck');
 const imagesDirCheck = require('./App/imagesDirCheck');
 
@@ -23,8 +22,6 @@ app.use('/', filesRoutes);
 app.use('/', downloadFileRoutes);
 app.use('/', downloadFilesRoutes);
 app.use('/', express.static('public/Images'));
-
-
 
 adminCheck();
 imagesDirCheck();
