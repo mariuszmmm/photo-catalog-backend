@@ -3,11 +3,13 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Visit = require("../models/Visit");
 const jwtSecret = process.env.JWT_SECRET;
 
 // Logowanie
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
+
   if (!(username && password)) {
     return res.status(400).json({ message: "WPROWADŹ LOGIN I HASŁO" });
   }
@@ -22,7 +24,12 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ message: "LOGIN LUB HASŁO NIEPOPRAWNE" });
   }
   const token = jwt.sign({ username, isAdmin: user.isAdmin }, jwtSecret, { expiresIn: '30m' });
-  res.status(200).json({ token });
+
+  const visitCount = await Visit.countDocuments();
+  if (!visitCount) {
+    return res.status(500).json({ message: "BŁĄD PODCZAS POBIERANIA LICZBY ODWIEDZIN" });
+  }
+  res.status(200).json({ token, visitCount });
 });
 
 // Zmiana hasła

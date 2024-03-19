@@ -23,6 +23,12 @@ app.use('/', downloadFileRoutes);
 app.use('/', downloadFilesRoutes);
 app.use('/', express.static('public/Images'));
 
+app.use((req, res, next) => {
+  const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  req.ipAddress = ipAddress;
+  next();
+});
+
 adminCheck();
 imagesDirCheck();
 

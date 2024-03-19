@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Item = require('../models/Item');
+const Visit = require('../models/Visit');
 const multer = require('../config/multerConfig');
 const fs = require('fs');
 const loadExampleItems = require('../example/loadExampleItems');
@@ -8,17 +9,23 @@ const copyExampleImages = require('../example/copyExampleImages')
 
 // Pobieranie elementów
 router.get("/items", async (req, res) => {
+  const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log('Adres IP klienta:', ipAddress); 
+
+   Visit.create({ ipAddress: req.ipAddress })
+   .then(result => console.log('Adres IP zapisany pomyślnie.'))
+   .catch(err =>  console.error('Błąd podczas zapisywania adresu IP:', err))
+
   setTimeout(() => {
     Item.find()
       .then(items => res.json(items))
       .catch(err => console.error("Błąd przy pobieraniu elementów: ", err))
   }, 1000)
-
 });
 
 // Załadowanie przykładowych elementów
-router.get("/example", async (req, res) => {
-  await copyExampleImages();
+router.get("/example", (req, res) => {
+  copyExampleImages();
   loadExampleItems()
     .then(items => {
       res.json(items);
