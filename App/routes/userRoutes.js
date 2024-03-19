@@ -29,6 +29,7 @@ router.post('/login', async (req, res) => {
   if (!visitCount) {
     return res.status(500).json({ message: "BŁĄD PODCZAS POBIERANIA LICZBY ODWIEDZIN" });
   }
+  console.log(token, visitCount)
   res.status(200).json({ token, visitCount });
 });
 

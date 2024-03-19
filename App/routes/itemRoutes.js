@@ -12,7 +12,7 @@ router.get("/items", async (req, res) => {
   const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log('Adres IP klienta:', ipAddress); 
 
-   Visit.create({ ipAddress: req.ipAddress })
+   Visit.create({ ipAddress: ipAddress })
    .then(result => console.log('Adres IP zapisany pomyślnie.'))
    .catch(err =>  console.error('Błąd podczas zapisywania adresu IP:', err))
 
