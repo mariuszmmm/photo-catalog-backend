@@ -40,11 +40,19 @@ The backend of the "Photo Catalog" application is built using Node.js and Expres
 - MongoDB
 
 ## API Endpoints
-- `POST /api/login` - user login
-- `GET /api/photos` - get list of photos
-- `POST /api/photos` - add a new photo (authorization required)
-- `PUT /api/photos/:id` - edit a photo (authorization required)
-- `DELETE /api/photos/:id` - delete a photo (authorization required)
+- `POST /api/login` - User login
+- `POST /api/user/password` - Change user password (authorization required)
+- `POST /api/user/add` - Add a new user (authorization required)
+- `GET /api/users` - Get list of users
+- `GET /api/items` - Get list of items
+- `GET /api/example` - Load example items
+- `POST /api/items` - Add a new item (authorization required)
+- `PUT /api/items/:id` - Edit an item (authorization required)
+- `DELETE /api/items/:id` - Delete an item (authorization required)
+- `PUT /api/items/:id/removeImage` - Remove an image from an item (authorization required)
+- `GET /api/files` - Get list of files
+- `GET /api/files/download` - Download all files as a zip
+- `GET /api/files/download/:fileName` - Download a specific file
 
 ## Frontend Repository
 The frontend of the application is in a separate repository: [https://github.com/mariuszmmm/photo-catalog](https://github.com/mariuszmmm/photo-catalog)
