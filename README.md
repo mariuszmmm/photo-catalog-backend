@@ -1,48 +1,50 @@
-# Photo Catalog - Backend
+# 📸 Photo Catalog - Backend
 
-The backend of the "Photo Catalog" application was built using Node.js and Express.js. It handles user authentication, data management, and storing photos.
+## Description
+The backend of the "Photo Catalog" application is built using Node.js and Express.js. It supports user login using tokens and hashed passwords, as well as managing photos stored on the Railway server and data in MongoDB.
 
-## Application Components:
-- **Backend:** Node.js with Express.js library.
-- **Database:** MongoDB.
+## Features
+- 🔐 **User login** using tokens
+- 🔑 **Password hashing**
+- 📁 **Storing photos** on the Railway server
+- 🗄️ **Storing data** in MongoDB
+- 📡 **API for managing the photo catalog**
+- 🛡️ **Different user permission levels** (user, administrator)
 
-## Features:
-- **Authentication:** Implemented using tokens and hashed passwords.
-- **File Storage:** Photos are stored on the Railway server.
-- **API:** Provides endpoints for managing the photo catalog and users.
-
-## ⚙ Setup
-To run the program from the 'photo-catalog-backend' repository on your local computer, you can follow these steps:
-
-1. **Downloading the source code:**
-   Clone the repository from the GitHub page to your local computer using the command:
-   ```commandline
-   git clone https://github.com/mariuszmmm/photo-catalog-backend.git
+## Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mariuszmmm/photo-catalog-backend
    ```
-
-2. **Dependency Installation:**
-   Navigate to the project directory, then install all required dependencies using a package manager like npm:
-   ```commandline
+2. **Navigate to the project directory:**
+   ```bash
    cd photo-catalog-backend
+   ```
+3. **Install dependencies:**
+   ```bash
    npm install
    ```
-
-3. **Configure environment variables:**
-   Create a `.env` file in the root directory of the project and add the following environment variables:
-   ```plaintext
-   MONGODB_URI=<Your_MongoDB_URI>
-   JWT_SECRET=<Your_JWT_Secret>
+4. **Create a `.env` file and add the required environment variables:**
+   ```env
+   MONGO_URI=your_mongo_uri
+   JWT_SECRET=your_jwt_secret
    ```
-
-4. **Starting the server:**
-   After configuring the environment variables, start the server using the command:
-   ```commandline
+5. **Start the server:**
+   ```bash
    npm start
    ```
 
-## Links:
-- [Frontend Repository](https://github.com/mariuszmmm/photo-catalog)
-- [Application Demo](https://mariuszmmm.github.io/photo-catalog/)
+## Requirements
+- Node.js
+- npm
+- MongoDB
 
-## Note:
-To ensure the application works correctly, make sure you have the [frontend](https://github.com/mariuszmmm/photo-catalog) running.
+## API Endpoints
+- `POST /api/login` - user login
+- `GET /api/photos` - get list of photos
+- `POST /api/photos` - add a new photo (authorization required)
+- `PUT /api/photos/:id` - edit a photo (authorization required)
+- `DELETE /api/photos/:id` - delete a photo (authorization required)
+
+## Frontend Repository
+The frontend of the application is in a separate repository: [https://github.com/mariuszmmm/photo-catalog](https://github.com/mariuszmmm/photo-catalog)
