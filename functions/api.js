@@ -4,15 +4,7 @@ const app = express();
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.json({
-    "message": "Hello World!"
-  });
-});
-
-router.get("/test", (req, res) => {
-  res.json({
-    "message": "test"
-  });
+  res.send("Serwer działa!")
 });
 
 app.use('/api', router);
