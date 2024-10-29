@@ -134,3 +134,6 @@ dist
 # netlify
 lambda/
 
+
+# Local Netlify folder
+.netlify
